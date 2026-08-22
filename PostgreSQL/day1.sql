@@ -25,5 +25,8 @@ WHERE kategori_produk = 'Elektronik'
 ORDER BY harga_total DESC
 LIMIT 2;
 
-SELECT SUM(harga_total) AS total_omzet, AVG(harga_total) AS rata_rata_harga
-FROM transaksi;
+--mengklasifikasi pemasukan per produk
+SELECT kategori_produk, SUM(harga_total) AS omzet_per_kategori
+FROM transaksi
+GROUP BY kategori_produk
+ORDER BY omzet_per_kategori DESC;
